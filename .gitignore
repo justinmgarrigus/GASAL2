@@ -23,3 +23,20 @@ src/\.vscode/
 *.nvvp
 
 *.nvprof
+
+_app_cuda_version_* 
+_cuobjdump_list_ptx_* 
+checkpoint_files/ 
+*.cpp1.ii
+*.cpp4.ii
+*.cudafe1.c
+*.cudafe1.cpp
+*.cudafe1.gpu
+*.cudafe1.stub.c
+*.fatbin
+*.fatbin.c
+*.module_id
+*.ptx
+*.ptxas
+*.sm_*.cubin
+*.reg.c

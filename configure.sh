@@ -24,7 +24,7 @@ else
 fi	
 
 
-cuda_lib_path="${cuda_path}/targets/x86_64-linux/lib"
+cuda_lib_path="$(dirname $(find ${cuda_path} -name 'libcudadevrt.a' -type f))"
 
 
 if [ -d $cuda_lib_path ]; then
@@ -36,7 +36,8 @@ else
   exit 1	
 fi
 
-cuda_runtime_file="${cuda_path}/targets/x86_64-linux/include/cuda_runtime.h"
+# cuda_runtime_file="${cuda_path}/targets/x86_64-linux/include/cuda_runtime.h"
+cuda_runtime_file="$(find ${cuda_path} -name 'cuda_runtime.h' -type f)"
 
 if [ -f $cuda_runtime_file ]; then
  echo  "CUDA runtime header file found (${cuda_runtime_file})"

@@ -65,9 +65,8 @@ gasal_res_t *gasal_res_new_host(uint32_t max_n_alns, Parameters *params)
 		}
 
 	}
-	if (params->start_pos == WITH_TB) {
-		CHECKCUDAERROR(cudaHostAlloc(&(res->n_cigar_ops), max_n_alns * sizeof(uint32_t),cudaHostAllocDefault));
-	}
+	if (params->start_pos == WITH_TB) CHECKCUDAERROR(cudaHostAlloc(&(res->n_cigar_ops), max_n_alns * sizeof(uint32_t),cudaHostAllocDefault));
+    else res->n_cigar_ops = NULL; 
 
 	return res;
 }
@@ -132,10 +131,14 @@ gasal_res_t *gasal_res_new_device_cpy(uint32_t max_n_alns, Parameters *params)
 			CHECKCUDAERROR(cudaMalloc(&(res->target_batch_end),max_n_alns * sizeof(uint32_t)));
 		
 			res->query_batch_start = NULL;
-			res->target_batch_start = NULL;
+			res->target_batch_start = NULL; 
 		}
 
 	}
+    
+    res->cigar = NULL;
+    
+    
 	return res;
 }
 

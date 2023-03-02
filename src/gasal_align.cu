@@ -5,7 +5,7 @@
 #include "gasal_kernels.h"
 #include "host_batch.h"
 
-
+#include <stdio.h>
 
 inline void gasal_kernel_launcher(int32_t N_BLOCKS, int32_t BLOCKDIM, algo_type algo, comp_start start, gasal_gpu_storage_t *gpu_storage, int32_t actual_n_alns, int32_t k_band, data_source semiglobal_skipping_head, data_source semiglobal_skipping_tail, Bool secondBest)
 {
@@ -327,7 +327,6 @@ int gasal_is_aln_async_done(gasal_gpu_storage_t *gpu_storage)
 
 
 void gasal_copy_subst_scores(gasal_subst_scores *subst){
-
 	cudaError_t err;
 	CHECKCUDAERROR(cudaMemcpyToSymbol(_cudaGapO, &(subst->gap_open), sizeof(int32_t), 0, cudaMemcpyHostToDevice));
 	CHECKCUDAERROR(cudaMemcpyToSymbol(_cudaGapExtend, &(subst->gap_extend), sizeof(int32_t), 0, cudaMemcpyHostToDevice));

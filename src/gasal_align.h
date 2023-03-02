@@ -1,5 +1,7 @@
 #ifndef __GASAL_ALIGN_H__
 #define __GASAL_ALIGN_H__
+#include "gasal.h" 
+#include "args_parser.h" 
 /*  ####################################################################################
     SEMI_GLOBAL Kernels generation - read from the bottom one, all the way up. (the most specialized ones are written before the ones that call them)
     ####################################################################################
